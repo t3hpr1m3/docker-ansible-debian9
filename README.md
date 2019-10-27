@@ -1,6 +1,6 @@
 # Debian 9 (stretch) Ansible image
 
-[![Docker Automated build](https://img.shields.io/docker/automated/jdubz/docker-ansible-debian9.svg?maxAge=2592000)](https://hub.docker.com/r/jdubz/docker-ansible-debian9/)
+[![Docker Automated build](https://img.shields.io/docker/cloud/build/jdubz/docker-ansible-debian9.svg?maxAge=2592000)](https://hub.docker.com/r/jdubz/docker-ansible-debian9/)
 
 For testing Ansible playbooks and roles on Gitlab CI
 
