@@ -1,15 +1,15 @@
 FROM debian:stretch
 
 ENV DEBIAN_FRONTEND noninteractive
-
-ENV ANSIBLE_ROLES_PATH=/usr/src
+ENV LC_ALL C
+ENV container docker
 
 RUN apt-get update && \
-	apt-get install -y --no-install-recommends && \
-	apt-get install -y \
+	apt-get install -y --no-install-recommends \
 		build-essential \
 		libffi-dev \
 		libssl-dev \
+		procps \
 		python-dev \
 		python-pip \
 		python-setuptools \
@@ -20,13 +20,17 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists && \
 	rm -Rf /usr/share/doc && \
 	rm -Rf /usr/share/man && \
-	apt-get clean && \
-	mkdir -p /etc/ansible && \
-	echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
+	apt-get clean
 
-COPY fake_initctl .
+RUN rm -rf /lib/systemd/system/multi-user.target.wants/* && \
+	rm -rf /etc/systemd/system/*.wants/* && \
+	rm -rf /lib/systemd/system/local-fs.target.wants/* && \
+	rm -rf /lib/systemd/system/sockets.target.wants/*udev* && \
+	rm -rf /lib/systemd/system/sockets.target.wants/*initctl* && \
+	rm -rf /lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup* && \
+	rm -rf /lib/systemd/system/systemd-update-utmp*
 
-RUN chmod +x fake_initctl && rm -rf /sbin/initctl && ln -sf /fake_initctl /sbin/initctl
+STOPSIGNAL SIGRTMIN+3
 
 VOLUME ["/sys/fs/cgroup"]
 
