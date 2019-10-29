@@ -11,6 +11,7 @@ RUN apt-get update && \
 		libssl-dev \
 		lsb-release \
 		procps \
+		python-apt \
 		python-dev \
 		python-pip \
 		python-setuptools \
