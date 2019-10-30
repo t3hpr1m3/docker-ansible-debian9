@@ -19,7 +19,7 @@ RUN apt-get update && \
 		sudo \
 		systemd \
 		wget && \
-	rm -rf /var/lib/apt/lists && \
+	rm -rf /var/lib/apt/lists/* && \
 	rm -Rf /usr/share/doc && \
 	rm -Rf /usr/share/man && \
 	apt-get clean
