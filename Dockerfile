@@ -6,6 +6,7 @@ ENV container docker
 
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
+		apt-utils \
 		build-essential \
 		libffi-dev \
 		libssl-dev \
