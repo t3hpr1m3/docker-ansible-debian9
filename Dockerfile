@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:stretch-slim
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LC_ALL C
@@ -7,16 +7,10 @@ ENV container docker
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 		apt-utils \
-		build-essential \
-		libffi-dev \
-		libssl-dev \
 		lsb-release \
 		procps \
 		python-apt \
-		python-dev \
 		python-pip \
-		python-setuptools \
-		python-wheel \
 		sudo \
 		systemd \
 		wget && \
